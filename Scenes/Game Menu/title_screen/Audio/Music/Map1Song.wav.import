@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Map1Song.wav-85b3750aa6df0c5b93b21fea3382b7fa.sample"
+
+[deps]
+
+source_file="res://title_screen/Audio/Music/Map1Song.wav"
+dest_files=[ "res://.import/Map1Song.wav-85b3750aa6df0c5b93b21fea3382b7fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
