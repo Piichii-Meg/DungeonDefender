@@ -29,7 +29,7 @@ func tower_built():
 
 ##this is where our label for money is
 func _process(delta):
-	$GUI/Gold/TextureRect/Label.text = "  " + str(money)
+	$GUI/ColorRect/Gold/TextureRect/Label.text = "  " + str(money)
 
 ##enemy spawn?
 func _on_WaveTimer_timeout():
