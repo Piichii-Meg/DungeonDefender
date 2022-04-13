@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=2]
@@ -147,6 +147,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 75, 55.5 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -234,11 +237,17 @@ position = Vector2( -2, 23 )
 rotation = 0.00101762
 scale = Vector2( 0.0748188, 0.0748188 )
 frames = SubResource( 2 )
-frame = 15
+frame = 114
 speed_scale = 12.0
 playing = true
 
 [node name="Tween" type="Tween" parent="GUI/ColorRect/Crystal_healthbar"]
+
+[node name="Label" type="Label" parent="GUI/ColorRect/Crystal_healthbar"]
+margin_left = 25.0
+margin_top = 10.0
+margin_right = 302.0
+margin_bottom = 33.0
 
 [node name="Gold" type="NinePatchRect" parent="GUI/ColorRect"]
 margin_left = 126.0
@@ -272,9 +281,6 @@ anchor_bottom = 0.5
 margin_left = 1.0
 margin_right = 55.0
 margin_bottom = 17.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Setting_button" type="TextureButton" parent="GUI/ColorRect"]
 margin_left = 36.0
@@ -400,6 +406,13 @@ margin_bottom = 15.0
 custom_fonts/font = ExtResource( 130 )
 text = "Quit"
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1098, 287 )
+shape = SubResource( 3 )
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="pressed" from="GUI/ColorRect/TowerSpawn" to="." method="_on_TextureButton_pressed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
