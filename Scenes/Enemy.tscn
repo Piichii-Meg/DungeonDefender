@@ -23,7 +23,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="PathFollow2D" type="PathFollow2D"]
+[node name="PathFollow2D" type="PathFollow2D" groups=["Wizard"]]
 rotate = false
 script = ExtResource( 2 )
 
@@ -39,6 +39,7 @@ position = Vector2( 9, 2 )
 scale = Vector2( 0.691489, 0.65 )
 frames = SubResource( 2 )
 animation = "wizard"
+frame = 1
 playing = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -30,8 +30,9 @@ func tower_built():
 ##this is where our label for money is
 func _process(delta):
 	$GUI/ColorRect/Gold/TextureRect/Label.text = "  " + str(money)
+	$GUI/ColorRect/Crystal_healthbar/Label.text = " " + str(player_health)
 
-##enemy spawn?
+##enemy spawn
 func _on_WaveTimer_timeout():
 	mobs_left = wave_mobs[wave]
 	$EnemyTimer.wait_time = wave_speed[wave]
@@ -67,3 +68,17 @@ func on_player_damage(damage):
 func update_health_bar(player_health):
 		hp_bar_tween.interpolate_property(hp_bar, 'value', hp_bar.value, player_health, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		hp_bar_tween.start()
+
+##When enemy exits the screen, player health takes damage
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Enemy"):
+		area.queue_free()
+		player_health -=25
+		#if player_health > 0:
+		#	update_health_bar(player_health)
+		#else:
+		#	emit_signal("game_fin", false)
+
+
+
+
