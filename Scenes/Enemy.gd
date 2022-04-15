@@ -3,7 +3,7 @@ extends PathFollow2D
 signal player_damage(damage)
 
 var health = 7
-var speed = 32
+var speed = 200
 var player_damage = 25
 
 func _physics_process(delta):

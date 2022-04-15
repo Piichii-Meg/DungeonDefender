@@ -36,11 +36,11 @@ __meta__ = {
 [node name="Label" type="Label" parent="VBoxContainer"]
 margin_right = 504.0
 margin_bottom = 59.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 4
+custom_fonts/font = ExtResource( 2 )
 text = "Options"
 align = 1
 
@@ -55,8 +55,8 @@ margin_right = 408.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "FullScreen"
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/FullScreen"]
@@ -75,8 +75,8 @@ custom_constants/separation = 20
 margin_right = 242.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Master Audio"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/MasterAudio"]
@@ -87,7 +87,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 min_value = -50.0
 max_value = 50.0
-step = 1.0
 value = 50.0
 
 [node name="Music" type="HBoxContainer" parent="VBoxContainer"]
@@ -100,8 +99,8 @@ custom_constants/separation = 20
 margin_right = 242.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Music"
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/Music"]
@@ -124,11 +123,11 @@ custom_constants/separation = 20
 margin_right = 242.0
 margin_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "SoundFx"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/Soundfx"]
+[node name="SoundFx" type="HSlider" parent="VBoxContainer/Soundfx"]
 margin_left = 262.0
 margin_right = 504.0
 margin_bottom = 45.0
@@ -144,4 +143,7 @@ margin_right = 504.0
 margin_bottom = 350.0
 custom_fonts/font = ExtResource( 3 )
 text = "Back"
+
+[connection signal="value_changed" from="VBoxContainer/MasterAudio/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Music/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Button_pressed"]

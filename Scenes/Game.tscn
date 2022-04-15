@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=145 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Tower.tscn" type="PackedScene" id=2]
@@ -129,10 +129,14 @@
 [ext_resource path="res://Assets/crystal_anim/render017.png" type="Texture" id=127]
 [ext_resource path="res://Assets/bg.png" type="Texture" id=128]
 [ext_resource path="res://Assets/gold.png" type="Texture" id=129]
-[ext_resource path="res://Assets/fonts/Fredoka24.tres" type="DynamicFont" id=130]
-[ext_resource path="res://Scenes/menu_ingame.tscn" type="PackedScene" id=131]
+[ext_resource path="res://Scenes/GUI.gd" type="Script" id=130]
+[ext_resource path="res://Assets/bt_back.png" type="Texture" id=131]
 [ext_resource path="res://Assets/setting_butt.png" type="Texture" id=132]
 [ext_resource path="res://Assets/fonts/Fredok36.tres" type="DynamicFont" id=133]
+[ext_resource path="res://Assets/bt_up.png" type="Texture" id=134]
+[ext_resource path="res://Assets/fonts/arial.ttf" type="DynamicFontData" id=135]
+[ext_resource path="res://Assets/fonts/arialbd.ttf" type="DynamicFontData" id=136]
+[ext_resource path="res://Assets/menu_back.png" type="Texture" id=137]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -147,7 +151,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 136 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = ExtResource( 135 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 75, 55.5 )
 
 [node name="Game" type="Node2D"]
@@ -168,6 +186,7 @@ one_shot = true
 position = Vector2( 229, 224 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource( 130 )
 
 [node name="ColorRect" type="ColorRect" parent="GUI"]
 anchor_top = 1.0
@@ -237,7 +256,7 @@ position = Vector2( -2, 23 )
 rotation = 0.00101762
 scale = Vector2( 0.0748188, 0.0748188 )
 frames = SubResource( 2 )
-frame = 114
+frame = 63
 speed_scale = 12.0
 playing = true
 
@@ -248,6 +267,9 @@ margin_left = 25.0
 margin_top = 10.0
 margin_right = 302.0
 margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Gold" type="NinePatchRect" parent="GUI/ColorRect"]
 margin_left = 126.0
@@ -283,136 +305,172 @@ margin_right = 55.0
 margin_bottom = 17.0
 
 [node name="Setting_button" type="TextureButton" parent="GUI/ColorRect"]
+pause_mode = 2
 margin_left = 36.0
 margin_top = 7.0
 margin_right = 104.0
 margin_bottom = 85.0
+action_mode = 0
 texture_normal = ExtResource( 132 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu_ingame" parent="GUI/ColorRect/Setting_button" instance=ExtResource( 131 )]
+[node name="menu" type="ColorRect" parent="GUI/ColorRect/Setting_button"]
 visible = false
-margin_left = -461.0
-margin_top = 244.0
-margin_right = -461.0
-margin_bottom = 244.0
-
-[node name="MenuPopup" type="Popup" parent="GUI/ColorRect"]
-pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -65.5
-margin_top = -301.5
-margin_right = 154.5
-margin_bottom = -141.5
-popup_exclusive = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -53.0
+margin_top = -531.0
+margin_right = 939.0
+margin_bottom = 39.0
+color = Color( 0, 0, 0, 0.427451 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuPopup" type="ColorRect" parent="GUI/ColorRect/MenuPopup"]
+[node name="NinePatchRect" type="NinePatchRect" parent="GUI/ColorRect/Setting_button/menu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -110.0
-margin_top = -80.0
-margin_right = 110.0
-margin_bottom = 80.0
-color = Color( 0.313726, 0.313726, 0.313726, 1 )
+margin_left = -167.0
+margin_top = -204.5
+margin_right = 167.0
+margin_bottom = 204.5
+texture = ExtResource( 137 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resume" type="ColorRect" parent="GUI/ColorRect/MenuPopup/MenuPopup"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/ColorRect/Setting_button/menu"]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = 10.0
+margin_top = -183.5
 margin_right = 100.0
-margin_bottom = 50.0
-color = Color( 0, 0, 0, 1 )
+margin_bottom = 183.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GUI/ColorRect/MenuPopup/MenuPopup/Resume"]
+[node name="Label" type="Label" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 35.0
+theme = SubResource( 5 )
+text = "Game Menu"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 39.0
+margin_right = 200.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="Continue" type="TextureButton" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 83.0
+margin_right = 200.0
+margin_bottom = 123.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 131 )
+texture_pressed = ExtResource( 134 )
+expand = true
+
+[node name="Label" type="Label" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer/Continue"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.5
-margin_top = -15.0
-margin_right = 80.5
-margin_bottom = 15.0
-custom_fonts/font = ExtResource( 130 )
-text = "Resume Game"
-
-[node name="Restart" type="ColorRect" parent="GUI/ColorRect/MenuPopup/MenuPopup"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -100.0
-margin_top = 60.0
-margin_right = 100.0
-margin_bottom = 100.0
-color = Color( 0, 0, 0, 1 )
+margin_left = -41.5
+margin_top = -10.0
+margin_right = 41.5
+margin_bottom = 10.0
+theme = SubResource( 6 )
+text = "Continue"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GUI/ColorRect/MenuPopup/MenuPopup/Restart"]
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 127.0
+margin_right = 200.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 200, 40 )
+
+[node name="Restart" type="TextureButton" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 171.0
+margin_right = 200.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 131 )
+texture_pressed = ExtResource( 134 )
+expand = true
+
+[node name="Label" type="Label" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer/Restart"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.5
-margin_top = -15.0
-margin_right = 80.5
-margin_bottom = 15.0
-custom_fonts/font = ExtResource( 130 )
+margin_left = -41.5
+margin_top = -10.0
+margin_right = 41.5
+margin_bottom = 10.0
+theme = SubResource( 6 )
 text = "Restart"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Quit" type="ColorRect" parent="GUI/ColorRect/MenuPopup/MenuPopup"]
-anchor_left = 0.563
-anchor_top = 0.236
-anchor_right = 0.563
-anchor_bottom = 0.236
-margin_left = -113.86
-margin_top = 72.24
-margin_right = 86.14
-margin_bottom = 112.24
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 215.0
+margin_right = 200.0
+margin_bottom = 255.0
+rect_min_size = Vector2( 200, 40 )
 
-[node name="Label" type="Label" parent="GUI/ColorRect/MenuPopup/MenuPopup/Quit"]
+[node name="quit" type="TextureButton" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer"]
+margin_top = 259.0
+margin_right = 200.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 40, 40 )
+texture_normal = ExtResource( 131 )
+texture_pressed = ExtResource( 134 )
+expand = true
+
+[node name="Label" type="Label" parent="GUI/ColorRect/Setting_button/menu/VBoxContainer/quit"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.5
-margin_top = -15.0
-margin_right = 80.5
-margin_bottom = 15.0
-custom_fonts/font = ExtResource( 130 )
+margin_left = -41.5
+margin_top = -10.0
+margin_right = 41.5
+margin_bottom = 10.0
+theme = SubResource( 6 )
 text = "Quit"
+align = 1
+valign = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SoundEffects"
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1098, 287 )
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="pressed" from="GUI/ColorRect/TowerSpawn" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="GUI/ColorRect/Setting_button" to="." method="_on_Setting_button_pressed"]
+[connection signal="pressed" from="GUI/ColorRect/Setting_button/menu/VBoxContainer/Continue" to="GUI" method="_on_Continue_pressed"]
+[connection signal="pressed" from="GUI/ColorRect/Setting_button/menu/VBoxContainer/Restart" to="GUI" method="_on_Restart_pressed"]
+[connection signal="pressed" from="GUI/ColorRect/Setting_button/menu/VBoxContainer/quit" to="GUI" method="_on_quit_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

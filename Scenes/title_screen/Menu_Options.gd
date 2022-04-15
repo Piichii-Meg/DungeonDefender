@@ -17,3 +17,7 @@ func _on_Button_pressed():
 	get_tree().change_scene("res://Scenes/title_screen/TitleScreen.tscn")
 
 ##option settings will be added here later
+
+
+func _on_HSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
