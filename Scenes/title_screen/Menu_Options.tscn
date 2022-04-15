@@ -146,4 +146,5 @@ text = "Back"
 
 [connection signal="value_changed" from="VBoxContainer/MasterAudio/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Music/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Soundfx/SoundFx" to="." method="_on_SoundFx_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Button_pressed"]

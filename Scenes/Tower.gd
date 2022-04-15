@@ -35,6 +35,8 @@ func _on_ShootTimer_timeout():
 			if enemies:
 				if current_enemy == enemies[0]:
 					var b = bullet.instance()
+					
+					$AudioStreamPlayer.play()
 					b.position = position ##can we change this so the bullet is instanced at TowerHead position
 					b.target = current_enemy
 					get_parent().add_child(b)

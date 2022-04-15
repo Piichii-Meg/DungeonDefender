@@ -1,30 +1,28 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Assets/fireballBig.png" type="Texture" id=1]
+[ext_resource path="res://Assets/projectile/51.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27.5, 18 )
+extents = Vector2( 8, 8 )
 
 [node name="Bullet" type="Area2D" groups=["Bullet", "Projectile"]]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.25, -1 )
-rotation = -1.5708
-scale = Vector2( 0.817073, 0.553191 )
+rotation = -6.28319
+scale = Vector2( 0.102911, 0.121492 )
 texture = ExtResource( 1 )
 flip_v = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0.5, 1 )
-scale = Vector2( 2.95, 1.8 )
+rotation = 1.25013e-14
+scale = Vector2( 0.780215, 0.800409 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 0 )
+position = Vector2( 4.76837e-07, 0 )
+rotation = 5.68434e-14
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

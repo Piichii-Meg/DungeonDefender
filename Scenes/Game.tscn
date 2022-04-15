@@ -238,6 +238,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="GUI/ColorRect/TowerSpawn/Towerselector"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -130.123
+margin_top = -132.857
+margin_right = -130.123
+margin_bottom = -132.857
+rect_scale = Vector2( 0.847556, 0.83817 )
+color = Color( 0.427451, 0, 0, 0.364706 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Crystal_healthbar" type="TextureProgress" parent="GUI/ColorRect"]
 margin_left = 375.0
 margin_top = 28.0
@@ -256,16 +269,14 @@ position = Vector2( -2, 23 )
 rotation = 0.00101762
 scale = Vector2( 0.0748188, 0.0748188 )
 frames = SubResource( 2 )
-frame = 63
+frame = 52
 speed_scale = 12.0
 playing = true
 
-[node name="Tween" type="Tween" parent="GUI/ColorRect/Crystal_healthbar"]
-
 [node name="Label" type="Label" parent="GUI/ColorRect/Crystal_healthbar"]
-margin_left = 25.0
-margin_top = 10.0
-margin_right = 302.0
+margin_left = 324.0
+margin_top = 15.0
+margin_right = 376.0
 margin_bottom = 33.0
 __meta__ = {
 "_edit_use_anchors_": false

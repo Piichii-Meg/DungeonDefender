@@ -3,7 +3,7 @@ extends PathFollow2D
 signal player_damage(damage)
 
 var health = 7
-var speed = 200
+var speed = 40
 var player_damage = 25
 
 func _physics_process(delta):
@@ -18,6 +18,7 @@ func _on_Area2D_area_entered(area):
 	if area.is_in_group("Projectile"):
 		area.queue_free()
 		health -=1
+		$AudioStreamPlayer.play()
 		if health<= 0:
 			get_parent().get_parent().money += 10
 			queue_free()
