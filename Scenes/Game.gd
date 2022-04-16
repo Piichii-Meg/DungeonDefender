@@ -6,7 +6,6 @@ var wave = 0
 var mobs_left = 0
 var wave_mobs = [1,5,5,5,12,0]
 var wave_speed = [1,2,3,4,5,100]
-
 var player_health = 100
 
 
@@ -19,9 +18,7 @@ func _ready():
 	$WaveTimer.start()
 	MusicController.stop_music()
 	MusicController.play_map1_music()
-
 	
-
 
 ##function is run everytime a tower is placed
 func tower_built():
@@ -80,3 +77,6 @@ func _on_Area2D_area_entered(area):
 func _on_Setting_button_pressed():
 	get_tree().paused = true
 	$GUI/ColorRect/Setting_button/menu.show()
+
+func _on_win_timer_timeout():
+	get_tree().change_scene("res://Scenes/Win.tscn")

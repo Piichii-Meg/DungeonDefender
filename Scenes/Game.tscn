@@ -269,7 +269,7 @@ position = Vector2( -2, 23 )
 rotation = 0.00101762
 scale = Vector2( 0.0748188, 0.0748188 )
 frames = SubResource( 2 )
-frame = 52
+frame = 41
 speed_scale = 12.0
 playing = true
 
@@ -477,6 +477,12 @@ bus = "SoundEffects"
 position = Vector2( 1098, 287 )
 shape = SubResource( 7 )
 
+[node name="win timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 140.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
 [connection signal="pressed" from="GUI/ColorRect/TowerSpawn" to="." method="_on_TextureButton_pressed"]
@@ -485,3 +491,4 @@ shape = SubResource( 7 )
 [connection signal="pressed" from="GUI/ColorRect/Setting_button/menu/VBoxContainer/Restart" to="GUI" method="_on_Restart_pressed"]
 [connection signal="pressed" from="GUI/ColorRect/Setting_button/menu/VBoxContainer/quit" to="GUI" method="_on_quit_pressed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="win timer" to="." method="_on_win_timer_timeout"]
